@@ -3,6 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    // Just a little sanity test for rest.js file:
+    fetch('/rest/book')
+      .then(response => {
+        return response.json();
+      })
+      .then(books => console.log(books));
+  }
   render() {
     return (
       <div className="App">

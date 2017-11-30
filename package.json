@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -21,5 +23,6 @@
   "prettier": {
     "semi": true,
     "singleQuote": true
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
