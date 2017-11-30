@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './reducers/store';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Root = () => (
   <Provider store={store}>

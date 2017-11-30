@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as booksActions from '../actions/books';
+import Books from '../components/Books';
 
 class App extends Component {
   componentDidMount() {
@@ -20,9 +21,7 @@ class App extends Component {
     console.log('props', nextProps);
   }
   render() {
-    return (
-      <div />
-    );
+    return <Books books={this.props.books} />;
   }
 }
 
