@@ -8,7 +8,8 @@ import {
   Modal,
   ModalBody,
   ModalHeader,
-  ModalFooter
+  ModalFooter,
+  Alert
 } from 'reactstrap';
 
 class FormModal extends React.Component {
@@ -31,7 +32,9 @@ class FormModal extends React.Component {
         title: '',
         author: '',
         date: '',
-        id: ''
+        id: '',
+        isValid: true,
+        invalidMsg: ''
       });
     }
   }
@@ -51,7 +54,9 @@ class FormModal extends React.Component {
                 id="title"
                 placeholder="Book title"
                 value={this.state.title}
-                onChange={e => this.setState({ title: e.target.value })}
+                onChange={e =>
+                  this.setState({ title: e.target.value, isValid: true })
+                }
               />
             </FormGroup>
             <FormGroup>
@@ -62,7 +67,9 @@ class FormModal extends React.Component {
                 id="author"
                 placeholder="Book author"
                 value={this.state.author}
-                onChange={e => this.setState({ author: e.target.value })}
+                onChange={e =>
+                  this.setState({ author: e.target.value, isValid: true })
+                }
               />
             </FormGroup>
             <FormGroup>
@@ -73,15 +80,20 @@ class FormModal extends React.Component {
                 id="date"
                 placeholder="Book date"
                 value={this.state.date}
-                onChange={e => this.setState({ date: e.target.value })}
+                onChange={e =>
+                  this.setState({ date: e.target.value, isValid: true })
+                }
               />
             </FormGroup>
+            {!this.state.isValid && (
+              <Alert color="danger">{this.state.invalidMsg}</Alert>
+            )}
           </ModalBody>
           <ModalFooter>
             <Button onClick={this.props.toggle}>Cancel</Button>
             <Button type="submit" color="primary">
-              Submit
-            </Button>{' '}
+              Save
+            </Button>
           </ModalFooter>
         </Form>
       </Modal>
@@ -89,6 +101,27 @@ class FormModal extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    if (this.state.title.trim() === '') {
+      this.setState({
+        isValid: false,
+        invalidMsg: 'The title is a required field.'
+      });
+      return;
+    }
+    if (this.state.author.trim() === '') {
+      this.setState({
+        isValid: false,
+        invalidMsg: 'The author is a required field.'
+      });
+      return;
+    }
+    if (isNaN(Date.parse(this.state.date))) {
+      this.setState({
+        isValid: false,
+        invalidMsg: 'Please provide a valid date.'
+      });
+      return;
+    }
     this.props.handleSubmit({
       title: this.state.title,
       author: this.state.author,
