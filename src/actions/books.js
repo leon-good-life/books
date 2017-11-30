@@ -5,6 +5,10 @@ import * as ajax from './ajax/books';
   Fetch books
 */
 
+export const fetchBooksRequest = () => ({
+  type: types.FETCH_BOOKS_REQUEST
+});
+
 export const fetchBooksSuccess = books => ({
   type: types.FETCH_BOOKS_SUCCESS,
   books
@@ -16,6 +20,7 @@ export const fetchBooksError = error => ({
 });
 
 export const fetchBooks = () => dispatch => {
+  dispatch(fetchBooksRequest());
   ajax
     .fetchBooks()
     .then(books => dispatch(fetchBooksSuccess(books)))

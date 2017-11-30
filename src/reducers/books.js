@@ -11,7 +11,7 @@ const books = (state = defaultState, action) => {
     /*
       Fetch books
     */
-    case types.FETCH_BOOKS:
+    case types.FETCH_BOOKS_REQUEST:
       return {
         books: [],
         isProcessingRequest: true,
