@@ -35,3 +35,11 @@ This project was given me as an interview assignment.
 | `/src/components`      | Don't aware of Redux. Only take props as parameters and render UI. |
 | `/src/containers`      | Aware of redux.                                                    |
 
+
+## Installation and Usage
+```bash
+git clone https://github.com/leon-good-life/books.git
+cd books
+npm install
+npm start
+```
