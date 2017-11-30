@@ -7,10 +7,21 @@ import Loading from '../components/Loading';
 import ErrorMessage from '../components/ErrorMessage';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.renderBooks = this.renderBooks.bind(this);
+  }
   componentDidMount() {
     this.props.actions.fetchBooks();
   }
   render() {
+    return (
+      <div className="container">
+        {this.renderBooks()}
+      </div>
+    )
+  }
+  renderBooks(){
     if (this.props.loading) {
       return <Loading />;
     }
