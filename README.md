@@ -18,3 +18,13 @@ This project was given me as an interview assignment.
 
 4. By running `node rest.js`, the REST API Server will run on port 3001. 
 5. In package.json configuration, I added `"proxy": "http://localhost:3001"`, this will automatically redirect all requests in ajax requests.
+6. I use Redux for state management. I wrote async actions to access the REST API as written in Redux documentation. [https://redux.js.org/docs/advanced/AsyncActions.html](https://redux.js.org/docs/advanced/AsyncActions.html)
+* I created directories:
+
+| Directory path      | What is inside? |
+|---------------------|-----------------|
+| `src/actions`       | Action creators |
+| `src/actions/types` | Action types    |
+| `src/actions/ajax`  | Ajax requests   |
+| `src/reducers`      | Reducers, store |
+
