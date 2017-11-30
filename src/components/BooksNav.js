@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-const BooksNav = () => (
+const BooksNav = ({ handleAdd }) => (
   <Navbar color="dark" dark>
     <div className="container">
       <NavbarBrand href="/" className="mr-auto">
@@ -15,7 +9,7 @@ const BooksNav = () => (
       </NavbarBrand>
       <Nav navbar>
         <NavItem>
-          <NavLink href="#">
+          <NavLink href="#" onClick={handleAdd}>
             + Add new book
           </NavLink>
         </NavItem>

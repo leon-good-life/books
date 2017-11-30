@@ -17,8 +17,8 @@ class FormModal extends React.Component {
     this.state = {
       title: '',
       author: '',
-      date: null,
-      id: null
+      date: '',
+      id: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -30,8 +30,8 @@ class FormModal extends React.Component {
       this.setState({
         title: '',
         author: '',
-        date: null,
-        id: null
+        date: '',
+        id: ''
       });
     }
   }
@@ -62,6 +62,17 @@ class FormModal extends React.Component {
                 id="author"
                 placeholder="Book author"
                 value={this.state.author}
+                onChange={e => this.setState({ title: e.target.value })}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="date">Date</Label>
+              <Input
+                type="date"
+                name="date"
+                id="date"
+                placeholder="Book date"
+                value={this.state.date}
                 onChange={e => this.setState({ title: e.target.value })}
               />
             </FormGroup>

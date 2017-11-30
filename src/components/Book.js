@@ -7,16 +7,15 @@ import {
   CardSubtitle,
   CardLink
 } from 'reactstrap';
+import formatDate from '../utils/formatDate';
 
 const Book = ({ book, onDelete, onEdit }) => {
-  const datetime = parseInt(book.date, 10);
-  const date = new Date(datetime);
   return (
     <Card>
       <CardBody>
         <CardTitle>{book.title}</CardTitle>
         <CardSubtitle>{book.author}</CardSubtitle>
-        <CardText>{date.toDateString()}</CardText>
+        <CardText>{formatDate(book.date)}</CardText>
         <CardLink href="#" onClick={e => onEdit(book)}>
           Edit
         </CardLink>

@@ -2,18 +2,19 @@ const express = require('express');
 const rest = express();
 const bodyParser = require('body-parser');
 rest.use(bodyParser.json());
+const crypto = require('crypto');
 
 const books = [
   {
     title: 'Zero to One',
     author: 'Peter Thiel',
-    date: 1410814800000,
+    date: '2014-09-16',
     id: '001'
   },
   {
     title: 'Modern Operating Systems',
     author: 'Andrew Tanenbaum',
-    date: 662680800000,
+    date: '1991-01-01',
     id: '002'
   }
 ];
@@ -31,19 +32,21 @@ rest.put('/rest/book', (req, res) => {
     !req.body ||
     typeof req.body.title !== 'string' ||
     typeof req.body.author !== 'string' ||
-    typeof req.body.date !== 'number'
+    typeof req.body.date !== 'string'
   ) {
     res.status(400).send(`
       Error: The server expected to recieve in http body:
       {
         "title": [string],
         "author": [string]
-        "date": [number]
+        "date": [string]
       }`);
     return;
   }
   try {
-    books.push(req.body);
+    const book = req.body;
+    book.id = crypto.randomBytes(20).toString('hex');
+    books.push(book);
     res.status(204).send();
   } catch (error) {
     res.send(error);
@@ -56,7 +59,7 @@ rest.post('/rest/book', (req, res) => {
     typeof req.body.id !== 'string' ||
     typeof req.body.title !== 'string' ||
     typeof req.body.author !== 'string' ||
-    typeof req.body.date !== 'number'
+    typeof req.body.date !== 'string'
   ) {
     res.status(400).send(`
       Error: The server expected to recieve in http body:
@@ -64,7 +67,7 @@ rest.post('/rest/book', (req, res) => {
         "id": [id]
         "title": [string],
         "author": [string]
-        "date": [number]
+        "date": [string]
       }`);
     return;
   }

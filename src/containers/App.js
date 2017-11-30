@@ -41,7 +41,14 @@ class App extends Component {
     }
     return (
       <div>
-        <BooksNav />
+        <BooksNav
+          handleAdd={() =>
+            this.setState({
+              formModal: true,
+              formModalMode: this.formModalModes.add
+            })
+          }
+        />
         <BooksWrapper
           books={this.props.books}
           error={this.props.error}
