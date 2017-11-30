@@ -35,6 +35,8 @@ This project was given me as an interview assignment.
 | `/src/components`      | Don't aware of Redux. Only take props as parameters and render UI. |
 | `/src/containers`      | Aware of redux.                                                    |
 
+8. I got an instruction "None of this operations should be persistent (refreshing the page will clear the
+changes).", So now, after this commit, it is not persistent. But it is possible to change that by changing `IS_PERSISTENT` variable in `IS_PERSISTENT.js` to `true`. If you do it while apllication is running, please type `Ctrl+C` in terminal and then run `npm start` again.
 
 ## Installation and Usage
 ```bash

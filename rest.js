@@ -3,6 +3,7 @@ const rest = express();
 const bodyParser = require('body-parser');
 rest.use(bodyParser.json());
 const crypto = require('crypto');
+const IS_PERSISTENT = require('./IS_PERSISTENT').IS_PERSISTENT;
 
 const books = [
   {
@@ -46,7 +47,7 @@ rest.put('/rest/book', (req, res) => {
   try {
     const book = req.body;
     book.id = crypto.randomBytes(20).toString('hex');
-    books.push(book);
+    IS_PERSISTENT && books.push(book);
     res.status(201).send(book.id);
   } catch (error) {
     res.send(error);
@@ -74,7 +75,9 @@ rest.post('/rest/book', (req, res) => {
   try {
     const bookId = req.body.id;
     const index = books.findIndex(book => book.id === bookId);
-    books[index] = req.body;
+    if (IS_PERSISTENT) {
+      books[index] = req.body;
+    }
     res.status(204).send();
   } catch (error) {
     res.status(500).send(error);
@@ -93,7 +96,9 @@ rest.delete('/rest/book', (req, res) => {
   try {
     const bookId = req.body.id;
     const index = books.find(book => book.id === bookId);
-    books.splice(index, 1);
+    if (IS_PERSISTENT){
+      books.splice(index, 1);
+    }
     res.status(204).send();
   } catch (error) {
     res.status(500).send(error);
