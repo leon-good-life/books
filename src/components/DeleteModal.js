@@ -6,11 +6,11 @@ const DeleteModal = ({ isOpen, toggle, onConfirm }) => (
     <ModalHeader toggle={toggle}>Confirm Delete</ModalHeader>
     <ModalBody>Are you sure you want to delete?</ModalBody>
     <ModalFooter>
-      <Button color="danger" onClick={onConfirm}>
-        Confirm Delete
-      </Button>{' '}
       <Button color="secondary" onClick={toggle}>
         Cancel
+      </Button>{' '}
+      <Button color="danger" onClick={onConfirm}>
+        Confirm Delete
       </Button>
     </ModalFooter>
   </Modal>
