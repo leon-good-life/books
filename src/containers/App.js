@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as booksActions from '../actions/books';
-import Books from '../components/Books';
-import Loading from '../components/Loading';
-import ErrorMessage from '../components/ErrorMessage';
+import BooksWrapper from '../components/BooksWrapper';
 import BooksNav from '../components/BooksNav';
 import DeleteModal from '../components/DeleteModal';
 
@@ -15,7 +13,6 @@ class App extends Component {
       deleteId: null,
       deleteModal: false
     };
-    this.renderBooks = this.renderBooks.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleConfirmDelete = this.handleConfirmDelete.bind(this);
     this.toggleDeleteModal = this.toggleDeleteModal.bind(this);
@@ -27,7 +24,12 @@ class App extends Component {
     return (
       <div>
         <BooksNav />
-        <div className="container mt-3">{this.renderBooks()}</div>
+        <BooksWrapper
+          books={this.props.books}
+          error={this.props.error}
+          loading={this.props.error}
+          handleDelete={this.handleDelete}
+        />
         <DeleteModal
           onConfirm={this.handleConfirmDelete}
           toggle={this.toggleDeleteModal}
@@ -35,15 +37,6 @@ class App extends Component {
         />
       </div>
     );
-  }
-  renderBooks() {
-    if (this.props.loading) {
-      return <Loading />;
-    }
-    if (this.props.error) {
-      return <ErrorMessage error={this.props.error} />;
-    }
-    return <Books books={this.props.books} onDelete={this.handleDelete} />;
   }
   handleDelete(id) {
     this.setState({ deleteId: id, deleteModal: true });
