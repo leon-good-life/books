@@ -9,9 +9,13 @@ export const fetchBooks = () =>
 const headers = { 'content-type': 'application/json' };
 
 export const addBook = book =>
-  fetch('/rest/book', { method: 'PUT', headers, body: book }).then(response => {
+  fetch('/rest/book', {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify(book)
+  }).then(response => {
     if (response.status === 201) {
-      return Promise.resolve();
+      return Promise.resolve(response.text());
     }
     return Promise.reject(new Error(response.statusText));
   });

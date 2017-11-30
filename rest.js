@@ -47,7 +47,7 @@ rest.put('/rest/book', (req, res) => {
     const book = req.body;
     book.id = crypto.randomBytes(20).toString('hex');
     books.push(book);
-    res.status(204).send();
+    res.status(201).send(book.id);
   } catch (error) {
     res.send(error);
   }

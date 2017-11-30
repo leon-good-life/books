@@ -62,7 +62,7 @@ class FormModal extends React.Component {
                 id="author"
                 placeholder="Book author"
                 value={this.state.author}
-                onChange={e => this.setState({ title: e.target.value })}
+                onChange={e => this.setState({ author: e.target.value })}
               />
             </FormGroup>
             <FormGroup>
@@ -73,7 +73,7 @@ class FormModal extends React.Component {
                 id="date"
                 placeholder="Book date"
                 value={this.state.date}
-                onChange={e => this.setState({ title: e.target.value })}
+                onChange={e => this.setState({ date: e.target.value })}
               />
             </FormGroup>
           </ModalBody>

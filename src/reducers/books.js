@@ -1,4 +1,5 @@
 import * as types from '../actions/types/books';
+import { debug } from 'util';
 
 const defaultState = {
   books: [],
@@ -43,8 +44,10 @@ const books = (state = defaultState, action) => {
       };
       break;
     case types.ADD_BOOK_SUCCESS:
+      const clonedArr = Array.from(state.books);
+      clonedArr.push(action.book);
       return {
-        books: Array.from(state.books).push(action.book),
+        books: clonedArr,
         isProcessingRequest: false,
         error: null
       };
@@ -95,7 +98,9 @@ const books = (state = defaultState, action) => {
       break;
     case types.DELETE_BOOK_SUCCESS:
       const clonedBooks = Array.from(state.books);
-      const bookIndex = clonedBooks.find(book => book.id === action.bookId);
+      const bookIndex = clonedBooks.findIndex(
+        book => book.id === action.bookId
+      );
       clonedBooks.splice(bookIndex, 1);
       return {
         books: clonedBooks,
