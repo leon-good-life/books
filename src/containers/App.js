@@ -5,6 +5,7 @@ import * as booksActions from '../actions/books';
 import Books from '../components/Books';
 import Loading from '../components/Loading';
 import ErrorMessage from '../components/ErrorMessage';
+import BooksNav from '../components/BooksNav';
 
 class App extends Component {
   constructor(props){
@@ -16,8 +17,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="container">
-        {this.renderBooks()}
+      <div>
+        <BooksNav />
+        <div className="container mt-3">
+          {this.renderBooks()}
+        </div>
       </div>
     )
   }
