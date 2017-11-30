@@ -46,8 +46,6 @@ export const addBook = book => dispatch => {
     .addBook(book)
     .then(id => {
       book.id = id;
-      console.log(book);
-      debugger;
       dispatch(addBookSuccess(book));
     })
     .catch(error => dispatch(addBookError(error)));
