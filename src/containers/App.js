@@ -6,19 +6,7 @@ import Books from '../components/Books';
 
 class App extends Component {
   componentDidMount() {
-    // Just a little sanity test for rest.js file:
-    fetch('/rest/book')
-      .then(response => {
-        return response.json();
-      })
-      .then(books => console.log(books));
-    
-    // Just a little sanity test for redux async actions:
     this.props.actions.fetchBooks();
-  }
-  componentWillReceiveProps(nextProps){
-    // Just a little sanity test for redux async actions:
-    console.log('props', nextProps);
   }
   render() {
     return <Books books={this.props.books} />;
