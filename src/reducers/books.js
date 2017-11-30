@@ -99,7 +99,7 @@ const books = (state = defaultState, action) => {
     case types.DELETE_BOOK_SUCCESS:
       const clonedBooks = Array.from(state.books);
       const bookIndex = clonedBooks.findIndex(
-        book => book.id === action.bookId
+        book => book.id === action.id
       );
       clonedBooks.splice(bookIndex, 1);
       return {
