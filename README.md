@@ -28,3 +28,10 @@ This project was given me as an interview assignment.
 | `src/actions/ajax`  | Ajax requests   |
 | `src/reducers`      | Reducers, store |
 
+7. I put components in `/src/components` and `/src/containers` directories. According to the [documentation written by Dan Abramov](https://redux.js.org/docs/basics/UsageWithReact.html) (works for Facebook, React contributer and Redux creator), there are two types of components: Presentational components and Container components. I put components in the following directories (best practice):
+
+| Component in directory | Characteristics                                                    |
+|------------------------|--------------------------------------------------------------------|
+| `/src/components`      | Don't aware of Redux. Only take props as parameters and render UI. |
+| `/src/containers`      | Aware of redux.                                                    |
+

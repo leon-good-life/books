@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as booksActions from './actions/books';
+import * as booksActions from '../actions/books';
 
 class App extends Component {
   componentDidMount() {
