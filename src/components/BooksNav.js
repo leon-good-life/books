@@ -1,14 +1,13 @@
 import React from 'react';
 import {
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink
 } from 'reactstrap';
 
-const BooksNav = ({}) => (
+const BooksNav = () => (
   <Navbar color="dark" dark>
     <div className="container">
       <NavbarBrand href="/" className="mr-auto">
