@@ -17,14 +17,16 @@ export const addBook = book =>
   });
 
 export const updateBook = book =>
-  fetch('/rest/book', { method: 'POST', headers, body: book }).then(
-    response => {
-      if (response.status === 204) {
-        return Promise.resolve(response.json());
-      }
-      return Promise.reject(new Error(response.statusText));
+  fetch('/rest/book', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(book)
+  }).then(response => {
+    if (response.status === 204) {
+      return Promise.resolve();
     }
-  );
+    return Promise.reject(new Error(response.statusText));
+  });
 
 export const deleteBook = id =>
   fetch('/rest/book', {

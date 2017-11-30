@@ -31,9 +31,8 @@ export const fetchBooks = () => dispatch => {
   Create book
 */
 
-export const addBookSuccess = books => ({
-  type: types.ADD_BOOK_SUCCESS,
-  books
+export const addBookSuccess = () => ({
+  type: types.ADD_BOOK_SUCCESS
 });
 
 export const addBookError = error => ({
@@ -44,7 +43,7 @@ export const addBookError = error => ({
 export const addBook = (title, author, date) => dispatch => {
   ajax
     .addBook({ title, author, date })
-    .then(books => dispatch(addBookSuccess))
+    .then(() => dispatch(addBookSuccess()))
     .catch(error => dispatch(addBookError(error)));
 };
 
@@ -52,9 +51,9 @@ export const addBook = (title, author, date) => dispatch => {
   Update book
 */
 
-export const updateBookSuccess = books => ({
+export const updateBookSuccess = book => ({
   type: types.UPDATE_BOOK_SUCCESS,
-  books
+  book
 });
 
 export const updateBookError = error => ({
@@ -62,10 +61,10 @@ export const updateBookError = error => ({
   error
 });
 
-export const updateBook = () => dispatch => {
+export const updateBook = book => dispatch => {
   ajax
-    .updateBook()
-    .then(books => dispatch(updateBookSuccess))
+    .updateBook(book)
+    .then(() => dispatch(updateBookSuccess(book)))
     .catch(error => dispatch(updateBookError(error)));
 };
 

@@ -3,7 +3,7 @@ import Books from './Books';
 import Loading from './Loading';
 import ErrorMessage from './ErrorMessage';
 
-const BooksWrapper = ({ loading, error, books, handleDelete }) => {
+const BooksWrapper = ({ loading, error, books, handleDelete, handleEdit }) => {
   const renderBooks = () => {
     if (loading) {
       return <Loading />;
@@ -11,7 +11,7 @@ const BooksWrapper = ({ loading, error, books, handleDelete }) => {
     if (error) {
       return <ErrorMessage error={error} />;
     }
-    return <Books books={books} onDelete={handleDelete} />;
+    return <Books books={books} onDelete={handleDelete} onEdit={handleEdit} />;
   };
   return <div className="container mt-3">{renderBooks()}</div>;
 };

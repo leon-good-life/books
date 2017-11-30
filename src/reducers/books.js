@@ -44,14 +44,14 @@ const books = (state = defaultState, action) => {
       break;
     case types.ADD_BOOK_SUCCESS:
       return {
-        books: Array.from(state.books),
+        books: Array.from(state.books).push(action.book),
         isProcessingRequest: false,
         error: null
       };
       break;
     case types.ADD_BOOK_ERROR:
       return {
-        books: Array.from(state.books).push(action.book),
+        books: Array.from(state.books),
         isProcessingRequest: false,
         error: action.error
       };
@@ -67,8 +67,11 @@ const books = (state = defaultState, action) => {
       };
       break;
     case types.UPDATE_BOOK_SUCCESS:
+      const clonedArray = Array.from(state.books);
+      const index = clonedArray.findIndex(book => book.id === action.book.id);
+      clonedArray[index] = action.book;
       return {
-        books: Array.from(state.books).push(action.book),
+        books: clonedArray,
         isProcessingRequest: false,
         error: null
       };

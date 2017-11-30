@@ -70,7 +70,7 @@ rest.post('/rest/book', (req, res) => {
   }
   try {
     const bookId = req.body.id;
-    const index = books.find(book => book.id === bookId);
+    const index = books.findIndex(book => book.id === bookId);
     books[index] = req.body;
     res.status(204).send();
   } catch (error) {
