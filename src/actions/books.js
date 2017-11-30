@@ -73,9 +73,8 @@ export const updateBook = () => dispatch => {
   Delete book
 */
 
-export const deleteBookSuccess = books => ({
-  type: types.DELETE_BOOK_SUCCESS,
-  books
+export const deleteBookSuccess = () => ({
+  type: types.DELETE_BOOK_SUCCESS
 });
 
 export const deleteBookError = error => ({
@@ -83,9 +82,9 @@ export const deleteBookError = error => ({
   error
 });
 
-export const deleteBook = () => dispatch => {
+export const deleteBook = id => dispatch => {
   ajax
-    .deleteBook()
-    .then(books => dispatch(deleteBookSuccess))
-    .catch(error => dispatch(deleteBookError(error)));
+    .deleteBook(id)
+    .then(() => dispatch(deleteBookSuccess()))
+    .catch(error => dispatch(deleteBookError(error.message)));
 };

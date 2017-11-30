@@ -9,6 +9,12 @@ const books = [
     author: 'Peter Thiel',
     date: 1410814800000,
     id: '001'
+  },
+  {
+    title: 'Modern Operating Systems',
+    author: 'Andrew Tanenbaum',
+    date: 662680800000,
+    id: '002'
   }
 ];
 

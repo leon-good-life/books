@@ -8,7 +8,7 @@ import {
   CardLink
 } from 'reactstrap';
 
-const Book = ({ book }) => {
+const Book = ({ book, onDelete }) => {
   const datetime = parseInt(book.date, 10);
   const date = new Date(datetime);
   return (
@@ -18,7 +18,11 @@ const Book = ({ book }) => {
         <CardSubtitle>{book.author}</CardSubtitle>
         <CardText>{date.toDateString()}</CardText>
         <CardLink href="#">Edit</CardLink>
-        <CardLink className="text-danger" href="#">
+        <CardLink
+          className="text-danger"
+          href="#"
+          onClick={e => onDelete(book.id)}
+        >
           Delete
         </CardLink>
       </CardBody>
