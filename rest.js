@@ -13,11 +13,11 @@ const books = [
 ];
 
 rest.get('/rest/book', (req, res) => {
-  try {
-    res.json(books);
-  } catch (error) {
+  // try {
+  //   res.json(books);
+  // } catch (error) {
     res.status(500).send(error);
-  }
+  // }
 });
 
 rest.put('/rest/book', (req, res) => {

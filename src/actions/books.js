@@ -24,7 +24,7 @@ export const fetchBooks = () => dispatch => {
   ajax
     .fetchBooks()
     .then(books => dispatch(fetchBooksSuccess(books)))
-    .catch(error => dispatch(fetchBooksError(error)));
+    .catch(error => dispatch(fetchBooksError(error.message)));
 };
 
 /*
